@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class HouseBehav : Buildable {
 
-    private CanvasController _canvas;
-    [SerializeField] private int producedScore;
+    private Builder _builder;
+    [SerializeField] private int producedMoney;
     [SerializeField] private float produceTime;
     
     private bool _producing = false;
 
 
     private void Start() {
-        _canvas = GameObject.Find("Canvas").GetComponent<CanvasController>();
+        _builder = GameObject.Find("BuildController").GetComponent<Builder>();
     }
 
     private void Update() {
         if (!_producing) {
             _producing = true;
             StartCoroutine(DelayedCoroutine.delayedCoroutine(produceTime,() => {
-                _canvas.addScore(producedScore);
+                _builder.addMoney(producedMoney);
                 _producing = false;
             }));
         }

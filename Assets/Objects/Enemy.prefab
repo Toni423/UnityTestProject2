@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2683306321312530920}
   - component: {fileID: 4193771619998092667}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 252144229944469207}
   - component: {fileID: 8328297082875184378}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6733764782992851467}
   - component: {fileID: 4374997294094949122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Circle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4418573520988184048}
   - component: {fileID: 5249910097030634549}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Circle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: -4132097174703277818}
   - component: {fileID: 552045161947549227}
   - component: {fileID: 6814527850758718038}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ MonoBehaviour:
   movementSpeed: 1
   inView:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
 --- !u!60 &552045161947549227
 PolygonCollider2D:
   m_ObjectHideFlags: 0
