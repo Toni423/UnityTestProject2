@@ -11,12 +11,14 @@ public class Knight : Buildable
     private Vector2 _startingPosition;
     [SerializeField] private float movementSpeed;
     
-    private void Awake() {
+    
+
+    private void Start() {
         _startingPosition = transform.position;
         _viewContactFilter.SetLayerMask(inView);
         _fieldOfView = GetComponent<CircleCollider2D>();
     }
-    
+
     private void FixedUpdate() {
         move();
     }
@@ -29,6 +31,7 @@ public class Knight : Buildable
         
         // _rb.AddForce(Time.fixedDeltaTime * movementSpeed * ((detectNearestObject()).normalized), ForceMode2D.Force);
         transform.position = Vector2.MoveTowards(currentPos, target, movementSpeed * Time.fixedDeltaTime);
+        healthBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0f, 0.5f));
     }
 
 

@@ -6,6 +6,7 @@ public class HouseBehav : Buildable {
     [SerializeField] private int producedMoney;
     [SerializeField] private float produceTime;
     
+    
     private bool _producing = false;
 
 
@@ -23,5 +24,6 @@ public class HouseBehav : Buildable {
         }
     }
 
+    
 
 }
