@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -13,7 +14,8 @@ public class Enemy : MonoBehaviour {
     private ContactFilter2D _viewContactFilter = new ContactFilter2D();
     
     private bool _damageCooldown = false;
-
+    
+    
     private void Awake() {
         _viewContactFilter.SetLayerMask(inView);
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -63,16 +65,22 @@ public class Enemy : MonoBehaviour {
 
         return result;
     }
-    
+
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Bullet")) {
+            life--;
+        }
+        if (life <= 0) {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D other) {
         if (!_damageCooldown && other.gameObject.CompareTag("Knight")) {
             _damageCooldown = true;
             life--;
-            
             StartCoroutine(DelayedCoroutine.delayedCoroutine(2f, () => _damageCooldown = false));
-        }
-        if (other.gameObject.CompareTag("Bullet")) {
-            life--;
         }
         if (life <= 0) {
             Destroy(gameObject);

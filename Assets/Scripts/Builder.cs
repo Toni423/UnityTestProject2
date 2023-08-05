@@ -21,8 +21,8 @@ public class Builder : MonoBehaviour
     private int _money = 500;
     private SpriteRenderer _currentSprite;
     private buildableEnum _selected = buildableEnum.House;
-    
-    
+
+    [SerializeField] private float rotationSpeed;
     
     
     private void Start()
@@ -40,6 +40,10 @@ public class Builder : MonoBehaviour
         Vector3 mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
         transform.position = mousePos;
+
+        if (_selected == buildableEnum.Wall) {
+            transform.Rotate(Vector3.forward, Input.mouseScrollDelta.y * rotationSpeed * Time.deltaTime);
+        }
         
         moneyText.SetText("" + _money);
     }
@@ -60,13 +64,14 @@ public class Builder : MonoBehaviour
 
         if (toBuild.GetComponent<Buildable>().price <= _money) {
             _money -= toBuild.GetComponent<Buildable>().price;
-            Instantiate(toBuild, transform.position, Quaternion.identity);
+            Instantiate(toBuild, transform.position, transform.rotation);
         }
     }
 
     public void selectHouse() {
         _selected = buildableEnum.House;
         _currentSprite.sprite = houseSprite;
+        transform.up = Vector3.up;
     }
     public void selectWall() {
         _selected = buildableEnum.Wall;
@@ -75,6 +80,7 @@ public class Builder : MonoBehaviour
     public void selectKnight() {
         _selected = buildableEnum.Knight;
         _currentSprite.sprite = knightSprite;
+        transform.up = Vector3.up;
     }
 
     private object _locker = new();
