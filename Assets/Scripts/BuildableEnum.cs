@@ -1,5 +1,6 @@
 public enum buildableEnum {
   House, 
   Wall, 
-  Knight
+  Knight,
+  Archer
 };

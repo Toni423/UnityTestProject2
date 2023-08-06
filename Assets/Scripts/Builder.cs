@@ -1,6 +1,4 @@
-using System;
 using TMPro;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class Builder : MonoBehaviour
@@ -11,11 +9,13 @@ public class Builder : MonoBehaviour
     [SerializeField] private GameObject house;
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject knight;
-
+    [SerializeField] private GameObject archer;
+    
     [Header("Sprites")] 
     [SerializeField] private Sprite houseSprite;
     [SerializeField] private Sprite wallSprite;
     [SerializeField] private Sprite knightSprite;
+    [SerializeField] private Sprite archerSprite;
 
     [Header("UI")] 
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -66,7 +66,7 @@ public class Builder : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(worldMousePosition, Vector2.zero, Mathf.Infinity, builableLayerMask);
         
         // Check for collisions with colliders on the specified layer(s)
-        return hit.collider != null;
+        return (hit.collider != null && !hit.collider.isTrigger);
     }
 
     private void build()
@@ -79,6 +79,8 @@ public class Builder : MonoBehaviour
             case buildableEnum.Wall : toBuild = wall;
                 break;
             case buildableEnum.Knight : toBuild = knight;
+                break;
+            case buildableEnum.Archer : toBuild = archer;
                 break;
             default: return;
         }
@@ -102,6 +104,11 @@ public class Builder : MonoBehaviour
     public void selectKnight() {
         _selected = buildableEnum.Knight;
         _currentSprite.sprite = knightSprite;
+        transform.up = Vector3.up;
+    }
+    public void selectArcher() {
+        _selected = buildableEnum.Archer;
+        _currentSprite.sprite = archerSprite;
         transform.up = Vector3.up;
     }
 
