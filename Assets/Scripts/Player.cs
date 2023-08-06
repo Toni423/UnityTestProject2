@@ -27,23 +27,7 @@ public class Player : MonoBehaviour
             shoot();
         }
     }
-
-
-    private void FixedUpdate() {
-        //move();
-        rotate();   
-    }
-
-  
-    private void rotate() {
-        if (_mainCamera == null)
-        {
-            return;
-        }
-        Vector2 mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        transform.up = (mousePos - (Vector2)transform.position).normalized;
-        
-    }
+    
 
     private void move() {
         Vector2 movement = Time.fixedDeltaTime * movementSpeed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
@@ -53,8 +37,8 @@ public class Player : MonoBehaviour
     }
 
     private void shoot() {
-        GameObject instBullet = Instantiate(bullet, transform.position + transform.up * 0.1f, transform.rotation);
-        instBullet.GetComponent<Rigidbody2D>().AddForce(transform.up * bulletForce, ForceMode2D.Impulse);
+        GameObject instBullet = Instantiate(bullet, transform.position, transform.rotation);
+        instBullet.GetComponent<Rigidbody2D>().AddForce((_mainCamera.ScreenToWorldPoint(Input.mousePosition)- transform.position).normalized  * bulletForce, ForceMode2D.Impulse);
     }
 
 

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
@@ -26,6 +27,8 @@ public class Builder : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private CinemachineShake cinemachineShake;
     [SerializeField] private float buildShakeTime;
+    [SerializeField] private LayerMask builableLayerMask;
+    private bool _aboveObject;
     
     private void Start()
     {
@@ -33,12 +36,15 @@ public class Builder : MonoBehaviour
         _currentSprite = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+    void Update() {
+        _aboveObject = aboveObject();
+        
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !_aboveObject)
         {
             build();
         }
+        
         Vector3 mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
         transform.position = mousePos;
@@ -48,6 +54,19 @@ public class Builder : MonoBehaviour
         }
         
         moneyText.SetText("" + _money);
+        
+    }
+
+
+    private bool aboveObject() {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = 10f; // Set the Z coordinate to the distance from the camera
+        Vector2 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        
+        RaycastHit2D hit = Physics2D.Raycast(worldMousePosition, Vector2.zero, Mathf.Infinity, builableLayerMask);
+        
+        // Check for collisions with colliders on the specified layer(s)
+        return hit.collider != null;
     }
 
     private void build()
@@ -86,7 +105,7 @@ public class Builder : MonoBehaviour
         transform.up = Vector3.up;
     }
 
-    private object _locker = new();
+    private readonly object _locker = new();
     public void addMoney(int amount) {
         lock (_locker) {
             _money += amount;

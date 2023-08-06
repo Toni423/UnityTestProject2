@@ -676,6 +676,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &446111719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 935134813743166791, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+  m_PrefabInstance: {fileID: 3697123886350501429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &446111724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446111719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4caf3e795d6c04994e40cf16ef7121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  down: {fileID: 21300000, guid: bb2a9016a44be7a4a803311556c08295, type: 3}
+  left: {fileID: 21300000, guid: 1af1647546d3420448d985e8d5d694ed, type: 3}
+  right: {fileID: 21300000, guid: 17420cda34712f448aa5bbac88b6494b, type: 3}
+  up: {fileID: 21300000, guid: f86ae76c662a01243a0744c9247ca5f9, type: 3}
 --- !u!1 &446379619
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +752,9 @@ MonoBehaviour:
   rotationSpeed: 3000
   cinemachineShake: {fileID: 2027953266}
   buildShakeTime: 0.3
+  builableLayerMask:
+    serializedVersion: 2
+    m_Bits: 896
 --- !u!212 &446379622
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12765,12 +12789,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7323668805746153671, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
       propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323668805746153671, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+      propertyPath: m_Size.x
+      value: 7.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323668805746153671, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+      propertyPath: m_Size.y
+      value: 7.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323668805746153671, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bb2a9016a44be7a4a803311556c08295, type: 3}
+    - target: {fileID: 7323668805746153671, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3264953897875326404, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+    - {fileID: 2365988701729066425, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+    - {fileID: 80496135047841227, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+    - {fileID: 8112676567905802285, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 935134813743166791, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 446111724}
   m_SourcePrefab: {fileID: 100100000, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

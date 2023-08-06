@@ -1,13 +1,16 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class Enemy : MonoBehaviour {
-    
+    [Header("General")]
     [SerializeField] private int life = 3;
     [SerializeField] private float movementSpeed;
 
+    [Header("View")]
     private GameObject _player;
+    [SerializeField] private GameObject viewObject;
     private PolygonCollider2D _fieldOfView;
 
     [SerializeField] private LayerMask inView;
@@ -15,11 +18,17 @@ public class Enemy : MonoBehaviour {
     
     private bool _damageCooldown = false;
     
+    [Header("Sprites")] 
+    [SerializeField] private Sprite leftSprite;
+    [SerializeField] private Sprite rightSprite;
+    private SpriteRenderer _spriteRenderer;
+    
     
     private void Awake() {
         _viewContactFilter.SetLayerMask(inView);
         _player = GameObject.FindGameObjectWithTag("Player");
-        _fieldOfView = GetComponent<PolygonCollider2D>();
+        _fieldOfView = viewObject.GetComponent<PolygonCollider2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     
@@ -33,7 +42,8 @@ public class Enemy : MonoBehaviour {
         Vector2 target = detectNearestObject().transform.position;
         Vector2 currentPos = transform.position;
 
-        transform.up = (target - currentPos).normalized;
+        viewObject.transform.right = -(target - currentPos).normalized;
+        _spriteRenderer.sprite = (target - currentPos).x < 0 ? leftSprite : rightSprite;
 
         // _rb.AddForce(Time.fixedDeltaTime * movementSpeed * ((detectNearestObject()).normalized), ForceMode2D.Force);
         transform.position = Vector2.MoveTowards(currentPos, target, movementSpeed * Time.fixedDeltaTime);
