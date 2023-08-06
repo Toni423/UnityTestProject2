@@ -1,6 +1,6 @@
 using TMPro;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
-using Vector2 = System.Numerics.Vector2;
 
 public class Builder : MonoBehaviour
 {
@@ -22,8 +22,10 @@ public class Builder : MonoBehaviour
     private SpriteRenderer _currentSprite;
     private buildableEnum _selected = buildableEnum.House;
 
+    [Header("General")]
     [SerializeField] private float rotationSpeed;
-    
+    [SerializeField] private CinemachineShake cinemachineShake;
+    [SerializeField] private float buildShakeTime;
     
     private void Start()
     {
@@ -65,6 +67,7 @@ public class Builder : MonoBehaviour
         if (toBuild.GetComponent<Buildable>().price <= _money) {
             _money -= toBuild.GetComponent<Buildable>().price;
             Instantiate(toBuild, transform.position, transform.rotation);
+            cinemachineShake.shake(0.5f, buildShakeTime);
         }
     }
 
