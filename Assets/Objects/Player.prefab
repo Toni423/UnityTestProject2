@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7323668805746153671}
   - component: {fileID: 2703774473882740033}
   - component: {fileID: 3789432269206167497}
-  - component: {fileID: 3970703492452735567}
+  - component: {fileID: 5209260540190667541}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -114,7 +114,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.034, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.23986, y: 0.23986, z: 0.23986}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6067492703252791703}
@@ -164,7 +164,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15e5388bf6d06db4cbf6b7c7f3936d3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -218,8 +218,8 @@ MonoBehaviour:
   bullet: {fileID: 9049852239505693365, guid: ce0be6b8b9fbf194db97b561f140198e, type: 3}
   bulletForce: 5
   life: 3
---- !u!58 &3970703492452735567
-CircleCollider2D:
+--- !u!70 &5209260540190667541
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -250,9 +250,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0011052042}
-  serializedVersion: 2
-  m_Radius: 0.5011052
+  m_Offset: {x: -0.20111635, y: -0.5530686}
+  m_Size: {x: 3.1106718, y: 6.0938716}
+  m_Direction: 0
 --- !u!1 &2365988701729066425
 GameObject:
   m_ObjectHideFlags: 0

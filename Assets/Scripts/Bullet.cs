@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
 
     private void Awake() {
         StartCoroutine(DelayedCoroutine.delayedCoroutine(bulletLifeTime, () => Destroy(gameObject)));
+        StartCoroutine(DelayedCoroutine.delayedCoroutine(0.2f, () => GetComponent<CircleCollider2D>().enabled = true));
     }
 
 

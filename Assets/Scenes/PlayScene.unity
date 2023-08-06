@@ -12608,9 +12608,21 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3970703492452735567, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+      propertyPath: m_Radius
+      value: 1.3726038
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970703492452735567, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.87260425
+      objectReference: {fileID: 0}
     - target: {fileID: 7323668805746153671, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
-      propertyPath: m_SortingOrder
+      propertyPath: m_FlipX
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323668805746153671, guid: 257cfc2fec77a8f4b989dabc8998c754, type: 3}
+      propertyPath: m_FlipY
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
