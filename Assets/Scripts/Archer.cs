@@ -9,10 +9,20 @@ public class Archer : Buildable
     private bool _reloading;
     [SerializeField] private GameObject arrow;
     [SerializeField] private float shootStrength;
+    private SpriteRenderer _spriteRenderer;
+
+    [Header("Sprites")] 
+    [SerializeField] private Sprite down;
+    [SerializeField] private Sprite left;
+    [SerializeField] private Sprite right;
+    [SerializeField] private Sprite up;
+
+    
     
     private void Start() {
         _viewContactFilter.SetLayerMask(inView);
         _fieldOfView = GetComponent<CircleCollider2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update() {
@@ -24,6 +34,14 @@ public class Archer : Buildable
                 return;
             }
             Vector2 target = (nearest.transform.position - transform.position).normalized;
+            
+            float angle = Vector2.SignedAngle(transform.right + transform.up , target);
+            if (angle < 0) {
+                _spriteRenderer.sprite = angle < -90f ? down : right;
+            }
+            else {
+                _spriteRenderer.sprite = angle > 90f ? left : up;
+            }
             
             GameObject instArrow = Instantiate(arrow, transform.position, Quaternion.identity);
             instArrow.transform.right = -target;
@@ -62,4 +80,6 @@ public class Archer : Buildable
         
         return result;
     }
+    
+    
 }

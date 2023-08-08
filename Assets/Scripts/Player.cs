@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -28,27 +29,18 @@ public class Player : MonoBehaviour
         }
     }
     
-
-    private void move() {
-        Vector2 movement = Time.fixedDeltaTime * movementSpeed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-
-        _rb.AddForce( movement, ForceMode2D.Impulse);
-
-    }
-
     private void shoot() {
         GameObject instBullet = Instantiate(bullet, transform.position, transform.rotation);
         instBullet.GetComponent<Rigidbody2D>().AddForce((_mainCamera.ScreenToWorldPoint(Input.mousePosition)- transform.position).normalized  * bulletForce, ForceMode2D.Impulse);
     }
-
-
+    
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Enemy")) {
             life--;
         }
 
         if (life <= 0) {
-            Destroy(gameObject);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
